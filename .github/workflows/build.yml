@@ -6,7 +6,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: unzip -q Tg2WA.zip
-      - uses: actions/setup-java@v4
+      - name: Fix ffmpeg dependency
+        run: sed -i 's#com.moizhassan.ffmpeg:ffmpeg-kit-16kb:6.0-2#dev.ffmpegkit-maintained:ffmpeg-kit-full:6.0.3#' Tg2WA/app/build.gradle.kts
+      - uses: actions/setup-java@v5
         with: {distribution: temurin, java-version: 17}
       - name: Install Gradle
         run: |
