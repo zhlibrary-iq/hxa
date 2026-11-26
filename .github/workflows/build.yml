@@ -9,7 +9,8 @@ jobs:
       - name: Fix ffmpeg dependency
         run: sed -i 's#com.moizhassan.ffmpeg:ffmpeg-kit-16kb:6.0-2#dev.ffmpegkit-maintained:ffmpeg-kit-full:6.0.3#' Tg2WA/app/build.gradle.kts
       - name: Show real errors
-        run: sed -i 's/catch (e: Exception)/catch (e: Throwable)/' Tg2WA/app/src/main/java/com/tg2wa/MainActivity.kt
+        run: |
+          sed -i 's/catch (e: Exception)/catch (e: Throwable)/' Tg2WA/app/src/main/java/com/tg2wa/MainActivity.kt
       - uses: actions/setup-java@v5
         with: {distribution: temurin, java-version: 17}
       - name: Install Gradle
